@@ -80,3 +80,106 @@ git pull
 git add .
 git commit -m "Resolve conflicts"
 ```
+
+
+
+///Step 1: Pull the redis Image 
+docker pull redis
+Step 2: Run a Redis Container 
+docker run --name my-redis -d redis
+docker images
+docker ps -a
+docker exec -it my-redis redis-cli
+127.0.0.1:6379> SET name "Alice" 
+OK 
+127.0.0.1:6379> GET name 
+"Alice" 
+docker stop my-redis
+docker start my-redis
+Step 7: Remove the Redis Container 
+Command: 
+docker rm my-redis 
+docker run -it -p 9090:80 --name myubuntu1 ubuntu:latest //for porting here give my-redis in thwe name of myubuntu1 
+apt update
+apt install nginx -y
+ls
+cd usr
+cd share
+ls
+cd ngnix
+ls
+cd html
+ls
+apt update
+apt install nano -y
+nano index.html
+//here the file gets opened so give h1 tag welcome to kmit or wtever and save as 
+Press Ctrl+O, then Enter to save.
+
+Press Ctrl+X to exit.
+Make sure nginx is running (inside the container):
+service nginx start
+From Windows browser, open:
+http://localhost:9090
+You should see your modified “Welcome to nginx! Hello from Kmit” page.
+in browser tab http://localhost:9090/  
+What It Does: 
+Deletes the container permanently. 
+Step 8: Remove the Redis Image 
+Command: 
+docker rmi my-redis 
+.Gain the ability to create, monitor, and troubleshoot running containers. 
+docker run --name my-redis -d redis
+docker logs my-redis 
+What It Does: 
+troubleshoot the container
+c.  Configure and manage networks for container communication. 
+List Existing Networks 
+docker network ls 
+Create a Custom Network 
+docker network create mynet 
+Run Containers in the Same Network 
+docker run -d --name redis-server --network=mynet redis 
+Inspect a Network 
+docker network inspect mynet
+Use a Volume in a Container 
+docker run -d --name my-reds -v mydata:/data redis 
+e. Learn how to list, remove, and manage images efficiently. 
+List Docker Images 
+docker images
+Remove Docker Images 
+
+docker rmi image-name 
+Pull the redis Image 
+docker pull redis
+
+//pipeline {
+    agent any
+    tools {
+        maven 'MAVEN_HOME'
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                // Jenkins git step
+                git url: 'https://github.com/vanajakmit-jpg/presentproject.git', branch: 'main'
+                bat "mvn clean"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install"
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package"
+            }
+        }
+    }
+} same as above but goto manage Jenkins->global configuration and add maven as " MAVEN_HOME " and save this is jenkins maven web 
